@@ -221,6 +221,8 @@
             height: auto;
         }
 
+
+
         .card-overlay {
             position: fixed;
             top: 0;
@@ -419,6 +421,13 @@
     <div class="gif-background" id="gifBackground"></div>
     <div class="dark-glow"></div>
 
+    <audio id="backgroundMusic" loop autoplay>
+        <source src="music.mp3" type="audio/mpeg">
+        <source src="music.wav" type="audio/wav">
+        <source src="music.ogg" type="audio/ogg">
+        Tu navegador no soporta audio.
+    </audio>
+
 
 
     <div class="floating-particles">
@@ -523,6 +532,7 @@
     <script>
         const names = ['MATHEW ?', 'TRISTAN ?', 'ZARATE ?', 'LINARES ?'];
         let currentNameIndex = 0;
+        let musicPlaying = false;
 
         function changeNames() {
             const nameDisplay = document.getElementById('nameDisplay');
@@ -531,6 +541,63 @@
         }
 
         setInterval(changeNames, 3000);
+
+        // Función para iniciar música automáticamente
+        function initMusic() {
+            const music = document.getElementById('backgroundMusic');
+            const musicToggle = document.getElementById('musicToggle');
+            const musicStatus = document.getElementById('musicStatus');
+            
+            // Intentar reproducir música automáticamente
+            music.play().then(() => {
+                musicPlaying = true;
+                musicToggle.textContent = '🔊';
+                musicStatus.textContent = 'Música sonando';
+            }).catch(() => {
+                // Si no se puede reproducir automáticamente, mostrar botón para activar
+                musicPlaying = false;
+                musicToggle.textContent = '🔇';
+                musicStatus.textContent = 'Clic para activar música';
+            });
+        }
+
+        function toggleMusic() {
+            const music = document.getElementById('backgroundMusic');
+            const musicToggle = document.getElementById('musicToggle');
+            const musicStatus = document.getElementById('musicStatus');
+            
+            if (musicPlaying) {
+                music.pause();
+                musicPlaying = false;
+                musicToggle.textContent = '🔇';
+                musicStatus.textContent = 'Música pausada';
+            } else {
+                music.play().then(() => {
+                    musicPlaying = true;
+                    musicToggle.textContent = '🔊';
+                    musicStatus.textContent = 'Música sonando';
+                }).catch(() => {
+                    musicStatus.textContent = 'Error al reproducir';
+                });
+            }
+        }
+
+        // Iniciar música cuando la página carga
+        window.addEventListener('load', initMusic);
+
+        // También intentar iniciar música con la primera interacción del usuario
+        document.addEventListener('click', function() {
+            if (!musicPlaying) {
+                const music = document.getElementById('backgroundMusic');
+                music.play().then(() => {
+                    musicPlaying = true;
+                    document.getElementById('musicToggle').textContent = '🔊';
+                    document.getElementById('musicStatus').textContent = 'Música sonando';
+                }).catch(() => {
+                    // Silenciosamente falla si no puede reproducir
+                });
+            }
+        }, { once: true });
 
         function openCard() {
             document.getElementById('cardOverlay').style.display = 'flex';
