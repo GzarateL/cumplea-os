@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños Mathew!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(45deg, #0f0f0f, #1a1a1a, #2d2d2d, #1a1a1a, #0f0f0f);
+            background-size: 300% 300%;
+            animation: darkGradientMove 8s ease infinite;
+        }
+
+        @keyframes darkGradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .gif-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            z-index: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: none;
+        }
+
+        .gif-button:hover {
+            background: linear-gradient(45deg, #ff6666, #ff0000);
+        }
+
+        .floating-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 68, 68, 0.6);
+            border-radius: 50%;
+            animation: darkFloat 10s infinite ease-in-out;
+            box-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+        }
+
+        .particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-delay: 1s; }
+        .particle:nth-child(3) { width: 3px; height: 3px; left: 30%; animation-delay: 2s; }
+        .particle:nth-child(4) { width: 5px; height: 5px; left: 40%; animation-delay: 3s; }
+        .particle:nth-child(5) { width: 4px; height: 4px; left: 50%; animation-delay: 4s; }
+        .particle:nth-child(6) { width: 6px; height: 6px; left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { width: 3px; height: 3px; left: 70%; animation-delay: 6s; }
+        .particle:nth-child(8) { width: 5px; height: 5px; left: 80%; animation-delay: 7s; }
+        .particle:nth-child(9) { width: 4px; height: 4px; left: 90%; animation-delay: 1.5s; }
+        .particle:nth-child(10) { width: 6px; height: 6px; left: 15%; animation-delay: 2.5s; }
+
+        .floating-numbers {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .number-9 {
+            position: absolute;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: bold;
+            color: rgba(255, 68, 68, 0.3);
+            text-shadow: 0 0 20px rgba(255, 68, 68, 0.5);
+            animation: numberFloat 12s infinite linear;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .number-9:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 15s; }
+        .number-9:nth-child(2) { left: 15%; animation-delay: 2s; animation-duration: 18s; }
+        .number-9:nth-child(3) { left: 25%; animation-delay: 4s; animation-duration: 14s; }
+        .number-9:nth-child(4) { left: 35%; animation-delay: 6s; animation-duration: 16s; }
+        .number-9:nth-child(5) { left: 45%; animation-delay: 8s; animation-duration: 13s; }
+        .number-9:nth-child(6) { left: 55%; animation-delay: 10s; animation-duration: 17s; }
+        .number-9:nth-child(7) { left: 65%; animation-delay: 1s; animation-duration: 19s; }
+        .number-9:nth-child(8) { left: 75%; animation-delay: 3s; animation-duration: 15s; }
+        .number-9:nth-child(9) { left: 85%; animation-delay: 5s; animation-duration: 14s; }
+        .number-9:nth-child(10) { left: 95%; animation-delay: 7s; animation-duration: 16s; }
+        .number-9:nth-child(11) { left: 12%; animation-delay: 9s; animation-duration: 18s; }
+        .number-9:nth-child(12) { left: 22%; animation-delay: 11s; animation-duration: 13s; }
+        .number-9:nth-child(13) { left: 32%; animation-delay: 1.5s; animation-duration: 17s; }
+        .number-9:nth-child(14) { left: 42%; animation-delay: 3.5s; animation-duration: 15s; }
+        .number-9:nth-child(15) { left: 52%; animation-delay: 5.5s; animation-duration: 19s; }
+
+        @keyframes numberFloat {
+            0% { 
+                transform: translateY(110vh) rotate(0deg) scale(0.5); 
+                opacity: 0; 
+            }
+            10% { 
+                opacity: 0.6; 
+                transform: translateY(90vh) rotate(36deg) scale(0.8);
+            }
+            50% { 
+                opacity: 0.4; 
+                transform: translateY(50vh) rotate(180deg) scale(1);
+            }
+            90% { 
+                opacity: 0.6; 
+                transform: translateY(10vh) rotate(324deg) scale(0.8);
+            }
+            100% { 
+                transform: translateY(-10vh) rotate(360deg) scale(0.5); 
+                opacity: 0; 
+            }
+        }
+
+        @keyframes darkFloat {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .birthday-title {
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: bold;
+            color: #cccccc;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+            margin-bottom: 20px;
+            animation: darkPulse 2s infinite;
+        }
+
+        .name-highlight {
+            font-size: clamp(3rem, 10vw, 5rem);
+            font-weight: bold;
+            text-shadow: 0 0 30px currentColor;
+            display: block;
+            margin: 10px 0;
+            animation: colorAlternate 2s infinite;
+            min-height: 1.2em;
+        }
+
+        @keyframes colorAlternate {
+            0%, 50% { 
+                color: #ff4444;
+                text-shadow: 0 0 30px #ff4444, 0 0 50px #ff4444;
+            }
+            51%, 100% { 
+                color: white;
+                text-shadow: 0 0 30px white, 0 0 50px rgba(255,255,255,0.8);
+            }
+        }
+
+        @keyframes darkPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .card-button {
+            background: linear-gradient(45deg, #ff4444, #cc0000);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.4);
+            transition: all 0.3s ease;
+            margin-top: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid transparent;
+        }
+
+        .card-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 68, 68, 0.6);
+            background: linear-gradient(45deg, #ff6666, #ff0000);
+            border-color: #ff4444;
+        }
+
+        .gif-below-button {
+            margin-top: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+        }
+
+        .card-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 100;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .birthday-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            border: 2px solid #ff4444;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 90%;
+            width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(255, 68, 68, 0.3);
+            transform: scale(0.3) rotateY(-90deg);
+            animation: cardOpen 0.8s ease-out 0.3s forwards;
+            position: relative;
+        }
+
+        @keyframes cardOpen {
+            to {
+                transform: scale(1) rotateY(0deg);
+            }
+        }
+
+        .card-content {
+            color: #cccccc;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .quiz-container {
+            display: none;
+        }
+
+        .quiz-question {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #ff4444;
+            font-weight: bold;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-option {
+            background: rgba(255, 68, 68, 0.1);
+            border: 2px solid #ff4444;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255, 68, 68, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .quiz-option.correct {
+            background: rgba(0, 255, 0, 0.3);
+            border-color: #00ff00;
+        }
+
+        .quiz-option.wrong {
+            background: rgba(255, 0, 0, 0.3);
+            border-color: #ff0000;
+        }
+
+
+
+        .next-button {
+            background: linear-gradient(45deg, #ff4444, #cc0000);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .next-button:hover {
+            background: linear-gradient(45deg, #ff6666, #ff0000);
+        }
+
+        .card-emoji {
+            font-size: clamp(2rem, 8vw, 3rem);
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+            filter: drop-shadow(0 0 10px #ff4444);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .card-message {
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #ff4444;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .close-button:hover {
+            opacity: 1;
+            color: white;
+        }
+
+        .card-decoration {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255,68,68,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: decorationSpin 15s linear infinite;
+        }
+
+        @keyframes decorationSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .dark-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,68,68,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: glowPulse 4s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        @media (max-width: 480px) {
+            .birthday-card {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            .card-message {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gif-background" id="gifBackground"></div>
+    <div class="dark-glow"></div>
+
+
+
+    <div class="floating-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="floating-numbers">
+        <div class="number-9">9</div>
+        <div class="number-9">9</div>
+        <div class="number-9">9</div>
+        <div class="number-9">9</div>
+        <div class="number-9">9</div>
+        <div class="number-9">9</div>
+        <div class="number-9">9</div>
+        <div class="number-9">9</div>
+        <div class="number-9">9</div>
+        <div class="number-9">9</div>
+        <div class="number-9">9</div>
+        <div class="number-9">9</div>
+        <div class="number-9">9</div>
+        <div class="number-9">9</div>
+        <div class="number-9">9</div>
+    </div>
+
+    <div class="container">
+        <div class="birthday-title">
+            Con el señor
+            <span class="name-highlight" id="nameDisplay">MATHEW ?</span>
+        </div>
+        
+        <button class="card-button" onclick="openCard()">
+            TENGO UN RETO PARA TI
+        </button>
+        
+        <img src="1.gif" alt="Animated GIF" class="gif-below-button">
+    </div>
+
+    <div class="card-overlay" id="cardOverlay" onclick="closeCard()">
+        <div class="birthday-card" onclick="event.stopPropagation()">
+            <div class="card-decoration"></div>
+            <button class="close-button" onclick="closeCard()">✕</button>
+            <div class="card-content">
+                <div class="card-emoji">🎁🎉🎂</div>
+                <h2 style="color: #ff4444; margin-bottom: 20px;">¡DESCUBRE TU REGALO!</h2>
+                <p style="margin-bottom: 20px;">Pero primero... debes superar este quiz 😎</p>
+                
+                <!-- Pregunta 1: Edad -->
+                <div class="quiz-container" id="question1" style="display: block;">
+                    <div class="quiz-question">¿Cuántos años cumples?</div>
+                    <div class="quiz-options">
+                        <button class="quiz-option" onclick="checkAge(8)">8 años</button>
+                        <button class="quiz-option" onclick="checkAge(9)">9 años</button>
+                        <button class="quiz-option" onclick="checkAge(10)">10 años</button>
+                    </div>
+                    <button class="next-button" id="nextBtn1" onclick="showQuestion2()">Siguiente →</button>
+                </div>
+
+                <!-- Pregunta 2: Resta -->
+                <div class="quiz-container" id="question2">
+                    <div class="quiz-question">¿Cuánto es 25 - 16?</div>
+                    <div class="quiz-options">
+                        <button class="quiz-option" onclick="checkSubtraction(8)">8</button>
+                        <button class="quiz-option" onclick="checkSubtraction(9)">9</button>
+                        <button class="quiz-option" onclick="checkSubtraction(11)">11</button>
+                    </div>
+                    <button class="next-button" id="nextBtn2" onclick="showQuestion3()">Siguiente →</button>
+                </div>
+
+                <!-- Pregunta 3: Multiplicación -->
+                <div class="quiz-container" id="question3">
+                    <div class="quiz-question">¿Cuánto es 9 × 7?</div>
+                    <div class="quiz-options">
+                        <button class="quiz-option" onclick="checkMath(56)">56</button>
+                        <button class="quiz-option" onclick="checkMath(63)">63</button>
+                        <button class="quiz-option" onclick="checkMath(72)">72</button>
+                    </div>
+                    <button class="next-button" id="nextBtn3" onclick="showFinalMessage()">Ver mi regalo →</button>
+                </div>
+
+                <!-- Mensaje Final -->
+                <div class="quiz-container" id="finalMessage">
+                    <div class="card-emoji">🎂🎈🎁</div>
+                    <div class="card-message">
+                        Hoy es tu día para correr, reír, comer pastel y salvar el mundo (¡o al menos tu cuarto 😄!).<br><br>
+                        <strong style="color: #ff4444;">¡Revisa debajo de tu almohada en tu cuarto!</strong>
+                    </div>
+                    <div class="card-emoji">💖✨🌟</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const names = ['MATHEW ?', 'TRISTAN ?', 'ZARATE ?', 'LINARES ?'];
+        let currentNameIndex = 0;
+
+        function changeNames() {
+            const nameDisplay = document.getElementById('nameDisplay');
+            currentNameIndex = (currentNameIndex + 1) % names.length;
+            nameDisplay.textContent = names[currentNameIndex];
+        }
+
+        setInterval(changeNames, 3000);
+
+        function openCard() {
+            document.getElementById('cardOverlay').style.display = 'flex';
+            createDarkConfetti();
+        }
+
+        function closeCard() {
+            document.getElementById('cardOverlay').style.display = 'none';
+            resetQuiz();
+        }
+
+        function resetQuiz() {
+            document.getElementById('question1').style.display = 'block';
+            document.getElementById('question2').style.display = 'none';
+            document.getElementById('question3').style.display = 'none';
+            document.getElementById('finalMessage').style.display = 'none';
+            document.getElementById('nextBtn1').style.display = 'none';
+            document.getElementById('nextBtn2').style.display = 'none';
+            document.getElementById('nextBtn3').style.display = 'none';
+        }
+
+        function checkAge(age) {
+            const options = document.querySelectorAll('#question1 .quiz-option');
+            options.forEach(option => {
+                if (parseInt(option.textContent) === age) {
+                    if (age === 9) {
+                        option.classList.add('correct');
+                        setTimeout(() => {
+                            document.getElementById('nextBtn1').style.display = 'block';
+                        }, 500);
+                    } else {
+                        option.classList.add('wrong');
+                        setTimeout(() => {
+                            option.classList.remove('wrong');
+                        }, 1000);
+                    }
+                }
+            });
+        }
+
+        function showQuestion2() {
+            document.getElementById('question1').style.display = 'none';
+            document.getElementById('question2').style.display = 'block';
+        }
+
+        function checkSubtraction(answer) {
+            const options = document.querySelectorAll('#question2 .quiz-option');
+            options.forEach(option => {
+                if (parseInt(option.textContent) === answer) {
+                    if (answer === 9) {
+                        option.classList.add('correct');
+                        setTimeout(() => {
+                            document.getElementById('nextBtn2').style.display = 'block';
+                        }, 500);
+                    } else {
+                        option.classList.add('wrong');
+                        setTimeout(() => {
+                            option.classList.remove('wrong');
+                        }, 1000);
+                    }
+                }
+            });
+        }
+
+        function showQuestion3() {
+            document.getElementById('question2').style.display = 'none';
+            document.getElementById('question3').style.display = 'block';
+        }
+
+        function checkMath(answer) {
+            const options = document.querySelectorAll('#question3 .quiz-option');
+            options.forEach(option => {
+                if (parseInt(option.textContent) === answer) {
+                    if (answer === 63) {
+                        option.classList.add('correct');
+                        setTimeout(() => {
+                            document.getElementById('nextBtn3').style.display = 'block';
+                        }, 500);
+                    } else {
+                        option.classList.add('wrong');
+                        setTimeout(() => {
+                            option.classList.remove('wrong');
+                        }, 1000);
+                    }
+                }
+            });
+        }
+
+        function showFinalMessage() {
+            document.getElementById('question3').style.display = 'none';
+            document.getElementById('finalMessage').style.display = 'block';
+            createDarkConfetti();
+        }
+
+        function createDarkConfetti() {
+            const colors = ['#ff4444', '#cc0000', '#ff6666', '#990000', '#ffffff', '#cccccc'];
+            const confettiCount = 60;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'fixed';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.width = Math.random() * 8 + 4 + 'px';
+                    confetti.style.height = confetti.style.width;
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    confetti.style.zIndex = '1000';
+                    confetti.style.pointerEvents = 'none';
+                    confetti.style.boxShadow = `0 0 10px ${confetti.style.backgroundColor}`;
+                    confetti.style.animation = `confettiFall ${Math.random() * 3 + 2}s linear forwards`;
+                    
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 5000);
+                }, i * 30);
+            }
+        }
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes confettiFall {
+                to {
+                    transform: translateY(100vh) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
