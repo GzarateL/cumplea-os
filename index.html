@@ -519,11 +519,12 @@
                 <!-- Mensaje Final -->
                 <div class="quiz-container" id="finalMessage">
                     <div class="card-emoji">🎂🎈🎁</div>
-                    <div class="card-message">
-                        Hoy es tu día para correr, reír, comer pastel y salvar el mundo (¡o al menos tu cuarto 😄!).<br><br>
-                        <strong style="color: #ff4444;">¡Revisa debajo de tu almohada en tu cuarto!</strong>
+                    <div class="card-message" id="typingMessage">
+                        <span id="messageText"></span>
+                        <span id="typingCursor" style="opacity: 1;">|</span>
                     </div>
-                    <div class="card-emoji">💖✨🌟</div>
+                    <div class="card-emoji" id="finalEmojis" style="opacity: 0;">🎉🐾💙</div>
+                    <div id="secretMessage" style="opacity: 0; margin-top: 20px; font-size: 1.2rem; color: #ff4444; font-weight: bold; transform: translateY(20px); transition: all 1s ease;"></div>
                 </div>
             </div>
         </div>
@@ -690,6 +691,61 @@
             document.getElementById('question3').style.display = 'none';
             document.getElementById('finalMessage').style.display = 'block';
             createDarkConfetti();
+            startTypingAnimation();
+        }
+
+        function startTypingAnimation() {
+            const fullMessage = "Sigue soñando en grande, volando alto y corriendo como rayo. Tú puedes lograr todo lo que te propongas, porque llevas fuego en el corazón y alas en los pies. ¡Que nada te frene, campeón! Hoy empieza otra gran aventura.\n\n🎉 ¡Feliz cumpleaños, cachorrito! 🐾💙";
+            const messageElement = document.getElementById('messageText');
+            const cursor = document.getElementById('typingCursor');
+            let currentIndex = 0;
+            let typingInterval;
+            
+            // Limpiar mensaje anterior
+            messageElement.innerHTML = '';
+            cursor.style.display = 'inline';
+            
+            // Efecto de cursor parpadeando
+            const cursorBlink = setInterval(() => {
+                cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+            }, 500);
+            
+            function typeCharacter() {
+                if (currentIndex < fullMessage.length) {
+                    const char = fullMessage.charAt(currentIndex);
+                    
+                    if (char === '\n') {
+                        messageElement.innerHTML += '<br>';
+                    } else {
+                        messageElement.innerHTML += char;
+                    }
+                    
+                    currentIndex++;
+                    typingInterval = setTimeout(typeCharacter, 50);
+                } else {
+                    // Terminar el efecto de escritura
+                    clearInterval(cursorBlink);
+                    cursor.style.display = 'none';
+                    
+                    // Mostrar emojis finales
+                    setTimeout(() => {
+                        document.getElementById('finalEmojis').style.opacity = '1';
+                    }, 500);
+                    
+                    // Mostrar mensaje secreto después de 2 segundos
+                    setTimeout(() => {
+                        const secretMsg = document.getElementById('secretMessage');
+                        secretMsg.textContent = '🎁 Revisa en tu cuarto, por tu cama 🎁';
+                        secretMsg.style.opacity = '1';
+                        secretMsg.style.transform = 'translateY(0)';
+                        
+                        // Confetti extra al mostrar el mensaje secreto
+                        createDarkConfetti();
+                    }, 2000);
+                }
+            }
+            
+            typeCharacter();
         }
 
         function createDarkConfetti() {
